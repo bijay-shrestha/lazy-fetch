@@ -25,8 +25,8 @@ public class LazyFetchApplication {
 
 
     @Bean
-    public ApplicationRunner init(){
-        return args ->{
+    public ApplicationRunner init() {
+        return args -> {
             System.out.println("#############################¡¡¡ PERSISTING DEPARTMENTS ¡¡¡¡¡¡########################################### ...");
             departmentService.createDepartment();
 
@@ -37,10 +37,10 @@ public class LazyFetchApplication {
             subDepartmentService.createSubDepartment();
 
             System.out.println("#############################------ FETCHING SUB DEPARTMENTS ------ ########################################### ...");
-            System.out.println("Printing ============" +subDepartmentService.fetchSubDepartmentById(1L));
+            System.out.println("Printing ============" + subDepartmentService.fetchSubDepartmentById(1L));
 
             System.out.println("#############################------ FETCHING SUB DEPARTMENTS WITH DEPARTMENT ------ ########################################### ...");
-            System.out.println("Printing ============" +subDepartmentService.fetchSubDepartmentAndDepartmentById(1L, true));
+            System.out.println("Printing ============" + subDepartmentService.fetchSubDepartmentAndDepartmentById(1L, true));
         };
     }
 }

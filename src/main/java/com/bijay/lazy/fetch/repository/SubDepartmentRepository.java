@@ -15,7 +15,6 @@ import java.util.Optional;
 public interface SubDepartmentRepository extends JpaRepository<SubDepartment, Long> {
 
     @Transactional(readOnly = true)
-    @Query("Select s from SubDepartment s where id=:id")
     Optional<SubDepartment> findById(@Param("id") Long id);
 
     @EntityGraph(attributePaths = {"department"})
