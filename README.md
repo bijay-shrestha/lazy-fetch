@@ -1,4 +1,4 @@
-#Developer Note
+# Developer Note
 
 Create a table `jindagi` with credentials as mentioned in `application.properties` file
 
