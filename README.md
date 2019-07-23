@@ -1,20 +1,21 @@
 # Developer Note
 
-Create a table `jindagi` with credentials as mentioned in `application.properties` file
+In reference to the settings in `application.properteies` Create a table name `jpa` with 
+credentials as mentioned in that `properties` file
 
 ## Sample Table Data
 
 ```sql
 
-INSERT INTO jindagi.department
+INSERT INTO jpa.department
 (id, code, created_by_id, created_date, department_name, last_modified_date, last_modified_by_id, status)
 VALUES(1, 'BJ', 1, '2019-07-23 04:02:20.000', 'Bijay', NULL, NULL, 'Y');
 
 
-INSERT INTO jindagi.sub_department
+INSERT INTO jpa.sub_department
 (id, code, name, status, department_id)
 VALUES(1, 'HELLO', 'Hello', 'Y', 1);
-INSERT INTO jindagi.sub_department
+INSERT INTO jpa.sub_department
 (id, code, name, status, department_id)
 VALUES(2, 'ADELE', 'Adele', 'Y', 1);
 
