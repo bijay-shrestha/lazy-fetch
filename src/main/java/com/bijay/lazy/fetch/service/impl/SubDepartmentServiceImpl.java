@@ -87,15 +87,16 @@ public class SubDepartmentServiceImpl implements SubDepartmentService {
                 .orElseThrow(resourceNotFound(id));
     }
 
-    public SubDepartmentResponseDTO fetchSubDepartmentAndDepartmentById(Long id, Boolean includeDepartment){
-        if(includeDepartment){
+    public SubDepartmentResponseDTO fetchSubDepartmentAndDepartmentById(Long id, Boolean includeDepartment) {
+        if (includeDepartment) {
+
             return subDepartmentRepository.findWithDepartmentById(id).map(subDepartment -> {
                 SubDepartmentResponseDTO subDeptDTO = modelMapper.map(subDepartment, SubDepartmentResponseDTO.class);
                 //explicitly add department.
                 subDeptDTO.setDepartmentResponseDTO(modelMapper.map(subDepartment.getDepartment(), DepartmentResponseDTO.class));
                 return subDeptDTO;
             }).orElseThrow(resourceNotFound(id));
-        }else {
+        } else {
             return fetchSubDepartmentById(id);
         }
     }

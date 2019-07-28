@@ -53,7 +53,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 //                .build();
 
         departmentRepository.save(department);
-//        departmentRepository.save(departmentBuild);
+//        departmentRepository.save(department2);
         departmentRepository.save(department2);
     }
 
