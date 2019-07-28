@@ -37,10 +37,14 @@ public class LazyFetchApplication {
             subDepartmentService.createSubDepartment();
 
             System.out.println("#############################------ FETCHING SUB DEPARTMENTS ------ ########################################### ...");
-            System.out.println("Printing ============" +subDepartmentService.fetchSubDepartmentById(1L));
+            System.out.println("Printing ============ " + subDepartmentService.fetchSubDepartmentById(1L));
 
             System.out.println("#############################------ FETCHING SUB DEPARTMENTS WITH DEPARTMENT ------ ########################################### ...");
-            System.out.println("Printing ============" +subDepartmentService.fetchSubDepartmentAndDepartmentById(1L, true));
+            System.out.println("Printing ============ " + subDepartmentService.fetchSubDepartmentAndDepartmentById(1L, true));
+
+
+            System.out.println("#############################------ FETCHING SUB DEPARTMENTS COUNT BY NAME------ ########################################### ...");
+            System.out.println("Printing Sub Department Count============  +++ " + subDepartmentService.findSubDepartmentCountByName("Hello"));
         };
     }
 }

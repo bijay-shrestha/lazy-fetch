@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import javax.persistence.EntityManager;
 import java.util.Optional;
 import java.util.function.Supplier;
 
@@ -21,6 +22,7 @@ public class SubDepartmentServiceImpl implements SubDepartmentService {
     private ModelMapper modelMapper;
     private final DepartmentService departmentService;
     private final SubDepartmentRepository subDepartmentRepository;
+    private EntityManager entityManager;
 
     public SubDepartmentServiceImpl(ModelMapper modelMapper,
                                     DepartmentService departmentService,
@@ -61,8 +63,17 @@ public class SubDepartmentServiceImpl implements SubDepartmentService {
         subDepartment2.setStatus('Y');
         subDepartment2.setDepartment(departmentService.fetchDepartmentById(1L));
 
+        SubDepartment subDepartment3 = new SubDepartment();
+        subDepartment3.setId(3L);
+        subDepartment3.setName("Hello");
+        subDepartment3.setCode("LOL LOL LOL");
+        subDepartment3.setStatus('Y');
+        subDepartment3.setDepartment(departmentService.fetchDepartmentById(1L));
+
+
         subDepartmentRepository.save(subDepartment);
         subDepartmentRepository.save(subDepartment2);
+        subDepartmentRepository.save(subDepartment3);
 
     }
 
@@ -92,5 +103,9 @@ public class SubDepartmentServiceImpl implements SubDepartmentService {
     private Supplier<IllegalArgumentException> resourceNotFound(Long subDeptId) {
         return () ->
                 new IllegalArgumentException(String.format("The DepartmentId: %d is not found!", subDeptId));
+    }
+
+    public Integer findSubDepartmentCountByName(String name) {
+        return subDepartmentRepository.findSubDepartmentCountByName(name);
     }
 }
