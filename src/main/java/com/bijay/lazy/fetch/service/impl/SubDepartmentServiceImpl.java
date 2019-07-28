@@ -51,7 +51,7 @@ public class SubDepartmentServiceImpl implements SubDepartmentService {
 
         SubDepartment subDepartment = new SubDepartment();
         subDepartment.setId(1L);
-        subDepartment.setName("Hello");
+        subDepartment.setName("Jindagi");
         subDepartment.setCode("HE");
         subDepartment.setStatus('Y');
         subDepartment.setDepartment(departmentService.fetchDepartmentById(1L));
@@ -109,12 +109,15 @@ public class SubDepartmentServiceImpl implements SubDepartmentService {
         }
     }
 
+    @Override
+    public Integer findSubDepartmentCountByName(String name) {
+        return subDepartmentRepository.findSubDepartmentCountByName(name);
+    }
+
     private Supplier<IllegalArgumentException> resourceNotFound(Long subDeptId) {
         return () ->
                 new IllegalArgumentException(String.format("The DepartmentId: %d is not found!", subDeptId));
     }
 
-    public Integer findSubDepartmentCountByName(String name) {
-        return subDepartmentRepository.findSubDepartmentCountByName(name);
-    }
+
 }

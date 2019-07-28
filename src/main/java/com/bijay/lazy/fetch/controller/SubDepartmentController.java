@@ -2,6 +2,7 @@ package com.bijay.lazy.fetch.controller;
 
 import com.bijay.lazy.fetch.dto.response.SubDepartmentResponseDTO;
 import com.bijay.lazy.fetch.service.SubDepartmentService;
+import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,9 +23,14 @@ public class SubDepartmentController {
     }
 
     @GetMapping("/sub/{id}")
-    public ResponseEntity<SubDepartmentResponseDTO>
-    getDepartment(@PathVariable Long id,
-                  @RequestParam (required = false, defaultValue = "false") boolean includeDepartment) {
+    public ResponseEntity<SubDepartmentResponseDTO> getDepartment(
+            @PathVariable Long id,
+            @RequestParam (required = false, defaultValue = "false") boolean includeDepartment) {
         return ResponseEntity.ok(subDepartmentService.fetchSubDepartmentAndDepartmentById(id, includeDepartment));
+    }
+
+    @GetMapping("/sub/count")
+    public ResponseEntity<?> getSubDepartmentCountByName(@RequestParam (required = false) String name){
+        return ResponseEntity.ok(subDepartmentService.findSubDepartmentCountByName(name));
     }
 }
