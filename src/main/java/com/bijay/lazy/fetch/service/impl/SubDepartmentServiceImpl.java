@@ -70,10 +70,18 @@ public class SubDepartmentServiceImpl implements SubDepartmentService {
         subDepartment3.setStatus('Y');
         subDepartment3.setDepartment(departmentService.fetchDepartmentById(1L));
 
+        SubDepartment subDepartment4 = new SubDepartment();
+        subDepartment4.setId(4L);
+        subDepartment4.setName("Hello");
+        subDepartment4.setCode("GOL GOL GOL");
+        subDepartment4.setStatus('Y');
+        subDepartment4.setDepartment(departmentService.fetchDepartmentById(1L));
+
 
         subDepartmentRepository.save(subDepartment);
         subDepartmentRepository.save(subDepartment2);
         subDepartmentRepository.save(subDepartment3);
+        subDepartmentRepository.save(subDepartment4);
 
     }
 
